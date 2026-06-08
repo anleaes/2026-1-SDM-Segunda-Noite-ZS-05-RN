@@ -1,17 +1,19 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { API_URL } from '../config';
 
 type Leilao = {
   id: number;
-  produto: any;
+  produto: number;
+  produto_nome?: string;
   data_inicio: string;
   data_fim: string;
   status: string;
+  valor_minimo: string;
 };
 
-const LeiloesScreen = () => {
+const LeiloesScreen = ({ navigation }: any) => {
   const [leiloes, setLeiloes] = useState<Leilao[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,13 +42,21 @@ const LeiloesScreen = () => {
           data={leiloes}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <View style={styles.card}>
+            <TouchableOpacity 
+              style={styles.card}
+              // MUDANÇA AQUI: Redirecionando para ListaLances
+              onPress={() => navigation.navigate('ListaLances', { 
+                leilaoId: item.id, 
+                produtoNome: item.produto_nome || `Produto ID: ${item.produto}`,
+                valorAtual: item.valor_minimo
+              })}
+            >
               <Text style={styles.nome}>
-                {typeof item.produto === 'object' ? item.produto.nome : item.produto}
+                {item.produto_nome || `Produto ID: ${item.produto}`}
               </Text>
               <Text style={styles.status}>Status: {item.status.toUpperCase()}</Text>
               <Text style={styles.info}>📅 Fim: {new Date(item.data_fim).toLocaleDateString()}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       )}

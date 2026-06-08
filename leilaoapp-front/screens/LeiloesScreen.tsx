@@ -5,10 +5,10 @@ import { API_URL } from '../config';
 
 type Leilao = {
   id: number;
-  produto: { nome: string };
+  produto: any;
   data_inicio: string;
   data_fim: string;
-  status: string; // 'ativo', 'finalizado', 'cancelado'
+  status: string;
 };
 
 const LeiloesScreen = () => {
@@ -41,7 +41,9 @@ const LeiloesScreen = () => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.card}>
-              <Text style={styles.nome}>{item.produto?.nome || 'Produto Indefinido'}</Text>
+              <Text style={styles.nome}>
+                {typeof item.produto === 'object' ? item.produto.nome : item.produto}
+              </Text>
               <Text style={styles.status}>Status: {item.status.toUpperCase()}</Text>
               <Text style={styles.info}>📅 Fim: {new Date(item.data_fim).toLocaleDateString()}</Text>
             </View>

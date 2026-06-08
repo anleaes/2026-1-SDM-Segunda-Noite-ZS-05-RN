@@ -1,13 +1,16 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
+import Ionicons from '@expo/vector-icons/build/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import UsuariosScreen from '../screens/UsuariosScreen';
-import Ionicons from '@expo/vector-icons/build/Ionicons';
+import PessoasScreen from '../screens/PessoasScreen';
+
 
 export type DrawerParamList = {
   Home: undefined;
   Usuarios: undefined;
+  Pessoas: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -37,6 +40,11 @@ const DrawerNavigator = () => {
          drawerIcon: ({ color, size }) => <Ionicons name="person-circle-outline" size={size} color={color} />
      }}
    />
+      <Drawer.Screen 
+  name="Pessoas" 
+  component={PessoasScreen} 
+  options={{ title: 'Pessoas' }} 
+/>
     </Drawer.Navigator>  
   );
 };

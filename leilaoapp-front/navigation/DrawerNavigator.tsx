@@ -7,6 +7,7 @@ import UsuariosScreen from '../screens/UsuariosScreen';
 import PessoasScreen from '../screens/PessoasScreen';
 import EnderecosScreen from '../screens/EnderecosScreen';
 import CadastroPessoaScreen from '../screens/CadastroPessoaScreen';
+import CadastroProdutoScreen from '../screens/CadastroProdutoScreen';
 
 
 
@@ -16,6 +17,7 @@ export type DrawerParamList = {
   Pessoas: undefined;
   Enderecos: undefined;
   CadastroPessoa: undefined;
+  CadastroProduto: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -61,6 +63,11 @@ const DrawerNavigator = () => {
   component={CadastroPessoaScreen} 
   options={{ title: 'Novo Cadastro' }} 
 />
+<Drawer.Screen 
+    name="CadastroProduto" 
+    component={CadastroProdutoScreen} 
+    options={{ title: 'Novo Produto' }} 
+  />
     </Drawer.Navigator>  
   );
 };

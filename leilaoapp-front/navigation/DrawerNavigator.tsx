@@ -5,12 +5,14 @@ import Ionicons from '@expo/vector-icons/build/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import UsuariosScreen from '../screens/UsuariosScreen';
 import PessoasScreen from '../screens/PessoasScreen';
+import EnderecosScreen from '../screens/EnderecosScreen';
 
 
 export type DrawerParamList = {
   Home: undefined;
   Usuarios: undefined;
   Pessoas: undefined;
+  Enderecos: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -44,6 +46,12 @@ const DrawerNavigator = () => {
   name="Pessoas" 
   component={PessoasScreen} 
   options={{ title: 'Pessoas' }} 
+      
+/>
+     <Drawer.Screen 
+  name="Enderecos" 
+  component={EnderecosScreen} 
+  options={{ title: 'Endereços' }} 
 />
     </Drawer.Navigator>  
   );

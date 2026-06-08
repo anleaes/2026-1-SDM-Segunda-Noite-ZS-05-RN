@@ -10,6 +10,7 @@ import CadastroPessoaScreen from '../screens/CadastroPessoaScreen';
 import CadastroProdutoScreen from '../screens/CadastroProdutoScreen';
 import ProdutosScreen from '../screens/ProdutosScreen';
 import LeiloesScreen from '../screens/LeiloesScreen';
+import DetalheLeilaoScreen from '../screens/DetalheLeilaoScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -20,6 +21,7 @@ export type DrawerParamList = {
   CadastroProduto: undefined;
   Produtos: undefined;
   Leiloes: undefined;
+  DetalheLeilao: { leilaoId: number; produtoNome: string; valorAtual: string };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -80,6 +82,9 @@ const DrawerNavigator = () => {
   component={LeiloesScreen} 
   options={{ title: 'Leilões' }} 
 />
+<Drawer.Screen name="DetalheLeilao" 
+  component={DetalheLeilaoScreen}
+  options={{ drawerItemStyle: { display: 'none' } }} />
     </Drawer.Navigator>  
   );
 };

@@ -21,7 +21,7 @@ const CustomDrawerContent = (props: any) => {
 const styles = StyleSheet.create({
   header: {
     padding: 20,
-    backgroundColor: '#4B7BE5',
+    backgroundColor: '#C89B3C',
     alignItems: 'center',
   },
   avatarPlaceholder: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   avatarText: {
-    color: '#4B7BE5',
+    color: '#C69B3C',
     fontSize: 32,
     fontWeight: 'bold',
   },

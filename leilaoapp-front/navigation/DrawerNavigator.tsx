@@ -36,10 +36,10 @@ const DrawerNavigator = () => {
       initialRouteName="Home"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
-        drawerActiveTintColor: '#4B7BE5',
-        drawerStyle: { backgroundColor: '#fff', width: 250 },
-        headerStyle: { backgroundColor: '#4B7BE5' },
-        headerTintColor: '#fff',
+        drawerActiveTintColor: '#4B2E1E',
+        drawerStyle: { backgroundColor: '#F5F0E6', width: 250 },
+        headerStyle: { backgroundColor: '#4B2E1E' },
+        headerTintColor: '#F5F0E6',
       }}
     >
       <Drawer.Screen
@@ -101,7 +101,7 @@ const DrawerNavigator = () => {
   name="CadastroLeilao" 
   component={CadastroLeilaoScreen} 
   options={{ title: 'Novo Leilão' }} 
-/>
+/>  
     </Drawer.Navigator>  
   );
 };

@@ -3,7 +3,7 @@ import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'reac
 import { API_URL } from '../config';
 
 const DetalheLeilaoScreen = ({ route, navigation }: any) => {
-  const { leilaoId, produtoNome, valorAtual } = route.params;
+  const { leilaoId, produtoNome, valorAtual } = route.params || {};
   const [valorLance, setValorLance] = useState('');
 
   const handleDarLance = async () => {
@@ -32,7 +32,7 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{produtoNome}</Text>
-      <Text style={styles.valor}>Valor Atual: R$ {valorAtual}</Text>
+      <Text style={styles.valor}>Valor Atual: R$ {String(valorAtual)}</Text>
       
       <TextInput 
         style={styles.input} 

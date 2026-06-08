@@ -7,7 +7,7 @@ import UsuariosScreen from '../screens/UsuariosScreen';
 import PessoasScreen from '../screens/PessoasScreen';
 import EnderecosScreen from '../screens/EnderecosScreen';
 import CadastroPessoaScreen from '../screens/CadastroPessoaScreen';
-
+import CategoriasScreen from '../screens/CategoriasScreen';
 
 
 export type DrawerParamList = {
@@ -16,6 +16,7 @@ export type DrawerParamList = {
   Pessoas: undefined;
   Enderecos: undefined;
   CadastroPessoa: undefined;
+  Categorias: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -59,9 +60,18 @@ const DrawerNavigator = () => {
      <Drawer.Screen 
   name="CadastroPessoa" 
   component={CadastroPessoaScreen} 
-  options={{ title: 'Novo Cadastro' }} 
+  options={{ title: 'Novo Cadastro' }}
 />
-    </Drawer.Navigator>  
+  <Drawer.Screen 
+  name="Categorias" 
+  component={CategoriasScreen} // Certifique-se que você importou CategoriasScreen lá no topo!
+  options={{ 
+    title: 'Categorias',
+    drawerIcon: ({ color, size }) => <Ionicons name="list-outline" size={size} color={color} /> 
+  }}
+/>
+    </Drawer.Navigator> 
+  
   );
 };
 

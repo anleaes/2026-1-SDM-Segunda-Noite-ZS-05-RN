@@ -65,13 +65,15 @@ const ProdutosScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 16 },
+  container: { flex: 1, backgroundColor: '#F5F0E6', padding: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' },
-  card: { backgroundColor: '#F9F9F9', padding: 16, borderRadius: 10, marginBottom: 12, borderWidth: 1, borderColor: '#eee' },
+  card: { backgroundColor: '#F5F0E6', padding: 16, borderRadius: 10, marginBottom: 12, borderWidth: 1, borderColor: '#4B2E1E' },
   nome: { fontSize: 18, fontWeight: 'bold', marginBottom: 4 },
   info: { fontSize: 14, color: '#666', marginBottom: 2 },
-  valor: { fontSize: 16, fontWeight: 'bold', color: '#27AE60', marginTop: 8 },
+  valor: { fontSize: 16, fontWeight: 'bold', color: '#CB9B3C', marginTop: 8 },
   empty: { textAlign: 'center', marginTop: 20, color: '#999' }
 });
 
 export default ProdutosScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   header: { backgroundColor: '#C89B3C', padding: 20, paddingTop: 40, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, marginBottom: 20 },
   greeting: { fontSize: 28, fontWeight: 'bold', color: '#fff', marginBottom: 5 },
   subtitle: { fontSize: 16, color: '#e0eaff' },
-   //C89B3C 4B7BE5
+   //marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6
   grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 16 },
   card: { backgroundColor: '#fff', width: '48%', padding: 20, borderRadius: 12, marginBottom: 15, elevation: 2, borderLeftWidth: 5 },
   cardTitle: { fontSize: 14, color: '#666', fontWeight: 'bold', marginBottom: 10 },

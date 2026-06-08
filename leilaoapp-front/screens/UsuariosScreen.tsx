@@ -77,9 +77,9 @@ const UsuariosScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 16, paddingTop: 16 },
+  container: { flex: 1, backgroundColor: '#F5F0E6', paddingHorizontal: 16, paddingTop: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12, color: '#333', alignSelf: 'center' },
-  card: { backgroundColor: '#F2F4F4', padding: 16, borderRadius: 10, marginBottom: 12, borderLeftWidth: 5, borderLeftColor: '#4B7BE5', elevation: 2 },
+  card: { backgroundColor: '#F5F0E6', padding: 16, borderRadius: 10, marginBottom: 12, borderLeftWidth: 5, borderLeftColor: '#CB9B3C', elevation: 2 },
   name: { fontSize: 18, fontWeight: 'bold', color: '#111', marginBottom: 6 },
   info: { fontSize: 14, color: '#555', marginTop: 3 },
   statusContainer: { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
@@ -90,3 +90,5 @@ const styles = StyleSheet.create({
 });
 
 export default UsuariosScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

@@ -180,20 +180,20 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  container: { flex: 1, padding: 20, backgroundColor: '#F5F0E6' },
   title: { fontSize: 24, fontWeight: 'bold', marginBottom: 15 },
   
-  valoresContainer: { backgroundColor: '#f9f9f9', padding: 15, borderRadius: 8, marginBottom: 20, borderWidth: 1, borderColor: '#eee' },
+  valoresContainer: { backgroundColor: '#F5F0E6', padding: 15, borderRadius: 8, marginBottom: 20, borderWidth: 1, borderColor: '#eee' },
   valorMinimo: { fontSize: 14, color: '#666', marginBottom: 5 },
   valorAtual: { fontSize: 18, color: '#27AE60', fontWeight: 'bold' },
   
   inputLabel: { fontSize: 14, color: '#555', marginBottom: 5, fontWeight: 'bold' },
   input: { borderWidth: 1, borderColor: '#ddd', padding: 15, borderRadius: 8, marginBottom: 20, fontSize: 16 },
   
-  pickerContainer: { borderWidth: 1, borderColor: '#ddd', borderRadius: 8, marginBottom: 20, backgroundColor: '#fafafa' },
+  pickerContainer: { borderWidth: 1, borderColor: '#ddd', borderRadius: 8, marginBottom: 20, backgroundColor: '#F5F0E6' },
   
   button: { backgroundColor: '#E67E22', padding: 15, borderRadius: 8, alignItems: 'center' },
-  buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  buttonText: { color: '#F5F0E6', fontWeight: 'bold', fontSize: 16 },
   
   avisoCaixa: { padding: 15, borderRadius: 8, marginBottom: 15, borderWidth: 1 },
   avisoErro: { backgroundColor: '#FDECEA', borderColor: '#E74C3C' },
@@ -203,3 +203,5 @@ const styles = StyleSheet.create({
 });
 
 export default DetalheLeilaoScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

@@ -134,7 +134,7 @@ const CadastroProdutoScreen = ({ navigation }: any) => {
     }
   };
 
-  if (loading) return <ActivityIndicator size="large" color="#4B7BE5" style={{ flex: 1, justifyContent: 'center' }} />;
+  if (loading) return <ActivityIndicator size="large" color="#4B2E1E" style={{ flex: 1, justifyContent: 'center' }} />;
 
   return (
     <ScrollView style={styles.container}>
@@ -210,16 +210,16 @@ const CadastroProdutoScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  container: { flex: 1, padding: 20, backgroundColor: '#F5F0E6' },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 20, textAlign: 'center', color: '#333' },
-  input: { borderWidth: 1, borderColor: '#ddd', padding: 15, borderRadius: 8, marginBottom: 15, backgroundColor: '#fafafa' },
+  input: { borderWidth: 1, borderColor: '##ddd', padding: 15, borderRadius: 8, marginBottom: 15, backgroundColor: '#fafafa' },
   label: { fontSize: 14, marginBottom: 5, color: '#555', fontWeight: 'bold' },
   labelSwitch: { fontSize: 16, color: '#333', fontWeight: 'bold' },
   picker: { borderWidth: 1, borderColor: '#ddd', borderRadius: 8, marginBottom: 15, backgroundColor: '#fafafa' },
-  switchContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15, backgroundColor: '#f0f4ff', padding: 10, borderRadius: 8 },
-  nestedContainer: { backgroundColor: '#fbfbfb', padding: 10, borderRadius: 8, borderWidth: 1, borderColor: '#eee', marginBottom: 15 },
+  switchContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15, backgroundColor: '#F5F0E6', padding: 10, borderRadius: 8 },
+  nestedContainer: { backgroundColor: '#F5F0E6', padding: 10, borderRadius: 8, borderWidth: 1, borderColor: '#eee', marginBottom: 15 },
   separator: { height: 1, backgroundColor: '#eee', marginVertical: 10 },
-  button: { backgroundColor: '#4B7BE5', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
+  button: { backgroundColor: '#4B2E1E', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
   buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
   avisoCaixa: { padding: 15, borderRadius: 8, marginBottom: 15, borderWidth: 1 },
   avisoErro: { backgroundColor: '#FDECEA', borderColor: '#E74C3C' },
@@ -227,5 +227,7 @@ const styles = StyleSheet.create({
   avisoLoading: { backgroundColor: '#EBF5FB', borderColor: '#3498DB' },
   avisoTexto: { fontSize: 14, fontWeight: 'bold', color: '#333' },
 });
-
+  
 export default CadastroProdutoScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

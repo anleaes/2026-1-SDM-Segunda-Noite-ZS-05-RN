@@ -110,11 +110,11 @@ const CadastroLeilaoScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  container: { flex: 1, padding: 20, backgroundColor: '#F5F0E6' },
   label: { fontSize: 14, fontWeight: 'bold', color: '#444', marginBottom: 5 },
-  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 12, marginBottom: 20, backgroundColor: '#fafafa' },
+  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 12, marginBottom: 20, backgroundColor: '#f0f0f0' },
   pickerContainer: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, marginBottom: 20 },
-  button: { backgroundColor: '#4B7BE5', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
+  button: { backgroundColor: '#CB9B3C', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
   buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
   avisoCaixa: { padding: 15, borderRadius: 8, marginBottom: 15, borderWidth: 1 },
   avisoErro: { backgroundColor: '#FDECEA', borderColor: '#E74C3C' },
@@ -124,3 +124,5 @@ const styles = StyleSheet.create({
 });
 
 export default CadastroLeilaoScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

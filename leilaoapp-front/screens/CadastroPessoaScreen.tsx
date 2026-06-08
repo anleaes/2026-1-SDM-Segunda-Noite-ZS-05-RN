@@ -179,23 +179,25 @@ const CadastroPessoaScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
+  container: { flex: 1, backgroundColor: '#F5F0E6', padding: 20 },
   
   avisoCaixa: { padding: 15, borderRadius: 8, marginBottom: 15, borderWidth: 1 },
   avisoErro: { backgroundColor: '#FDECEA', borderColor: '#E74C3C' },
   avisoSucesso: { backgroundColor: '#EAF8F1', borderColor: '#2ECC71' },
   avisoLoading: { backgroundColor: '#EBF5FB', borderColor: '#3498DB' },
   avisoTexto: { fontSize: 14, fontWeight: 'bold', color: '#333' },
-  
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginTop: 5, marginBottom: 10, color: '#4B7BE5', borderBottomWidth: 1, borderBottomColor: '#eee', paddingBottom: 5 },
+   //#4B2E1E  4B7BE5
+  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginTop: 5, marginBottom: 10, color: '#4B2E1E', borderBottomWidth: 1, borderBottomColor: '#eee', paddingBottom: 5 },
   inputLabel: { fontSize: 13, color: '#555', marginBottom: 4, fontWeight: '600', marginLeft: 2 },
   input: { borderWidth: 1, borderColor: '#ccc', padding: 12, borderRadius: 8, marginBottom: 15, backgroundColor: '#fafafa', fontSize: 15 },
   row: { flexDirection: 'row', justifyContent: 'space-between' },
   halfInput: { width: '48%' },
   pickerContainer: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, marginBottom: 15, backgroundColor: '#fafafa' },
   switchContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingVertical: 5, paddingHorizontal: 5 },
-  button: { backgroundColor: '#4B7BE5', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10, marginBottom: 50, elevation: 2 },
+  button: { backgroundColor: '#4B2E1E', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10, marginBottom: 50, elevation: 2 },
   buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 }
 });
 
 export default CadastroPessoaScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

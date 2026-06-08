@@ -65,9 +65,9 @@ const EnderecosScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 16, paddingTop: 16 },
+  container: { flex: 1, backgroundColor: '#F5F0E6', paddingHorizontal: 16, paddingTop: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12, color: '#333', alignSelf: 'center' },
-  card: { backgroundColor: '#F0FFF4', padding: 16, borderRadius: 10, marginBottom: 12, borderLeftWidth: 5, borderLeftColor: '#2ECC71', elevation: 2 },
+  card: { backgroundColor: '#F5F0E6', padding: 16, borderRadius: 10, marginBottom: 12, borderLeftWidth: 5, borderLeftColor: '#CB9B3C', elevation: 2 },
   name: { fontSize: 18, fontWeight: 'bold', color: '#222' },
   info: { fontSize: 14, color: '#555', marginTop: 4 },
   cep: { fontSize: 14, fontWeight: 'bold', color: '#2ECC71', marginTop: 8 },
@@ -75,3 +75,5 @@ const styles = StyleSheet.create({
 });
 
 export default EnderecosScreen;
+
+//marrom #4B2E1E -- dourado #CB9B3C -- creme #F5F0E6

@@ -12,6 +12,7 @@ import ProdutosScreen from '../screens/ProdutosScreen';
 import LeiloesScreen from '../screens/LeiloesScreen';
 import DetalheLeilaoScreen from '../screens/DetalheLeilaoScreen';
 import ListaLancesScreen from '../screens/ListaLancesScreen';
+import CadastroLeilaoScreen from '../screens/CadastroLeilaoScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -22,6 +23,7 @@ export type DrawerParamList = {
   CadastroProduto: undefined;
   Produtos: undefined;
   Leiloes: undefined;
+  CadastroLeilao: undefined;
   DetalheLeilao: { leilaoId: number; produtoNome: string; valorAtual: string };
   ListaLances: { leilaoId: number; produtoNome: string; valorAtual: string };
 };
@@ -95,6 +97,11 @@ const DrawerNavigator = () => {
         component={ListaLancesScreen}
         options={{ title: 'Histórico de Lances', drawerItemStyle: { display: 'none' } }} 
       />
+      <Drawer.Screen 
+  name="CadastroLeilao" 
+  component={CadastroLeilaoScreen} 
+  options={{ title: 'Novo Leilão' }} 
+/>
     </Drawer.Navigator>  
   );
 };

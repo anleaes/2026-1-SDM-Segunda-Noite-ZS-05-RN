@@ -9,33 +9,47 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
   const [valorLance, setValorLance] = useState('');
   const [statusAviso, setStatusAviso] = useState({ tipo: '', mensagem: '' });
   
-  // Estados para o nosso "Login Improvisado"
   const [compradores, setCompradores] = useState<any[]>([]);
   const [compradorSelecionado, setCompradorSelecionado] = useState<string | number>('');
   const [loadingCompradores, setLoadingCompradores] = useState(true);
 
-  // Busca os usuários na API para montar o Picker
+  // Novo estado para controlar o maior lance recebido
+  const [maiorLance, setMaiorLance] = useState<number | null>(null);
+
   useEffect(() => {
-    const fetchCompradores = async () => {
+    const fetchDados = async () => {
       try {
-        const response = await fetch(`${API_URL}/usuarios/`);
-        if (response.ok) {
-          const data = await response.json();
-          setCompradores(data);
-          // Se tiver usuários, já deixa o primeiro selecionado por padrão
-          if (data.length > 0) {
-            setCompradorSelecionado(data[0].id);
+        // 1. Busca os usuários para o Picker
+        const resUsuarios = await fetch(`${API_URL}/usuarios/`);
+        if (resUsuarios.ok) {
+          const dataUsuarios = await resUsuarios.json();
+          setCompradores(dataUsuarios);
+          if (dataUsuarios.length > 0) {
+            setCompradorSelecionado(dataUsuarios[0].id);
+          }
+        }
+
+        // 2. Busca os lances para calcular o "Valor Atual"
+        const resLances = await fetch(`${API_URL}/lances/`);
+        if (resLances.ok) {
+          const dataLances = await resLances.json();
+          const lancesDesteLeilao = dataLances.filter((lance: any) => lance.leilao === leilaoId);
+          
+          if (lancesDesteLeilao.length > 0) {
+            // Encontra o maior valor entre os lances
+            const maxBid = Math.max(...lancesDesteLeilao.map((l: any) => parseFloat(l.valor)));
+            setMaiorLance(maxBid);
           }
         }
       } catch (error) {
-        console.error("Erro ao buscar usuários:", error);
+        console.error("Erro ao buscar dados:", error);
       } finally {
         setLoadingCompradores(false);
       }
     };
 
-    fetchCompradores();
-  }, []);
+    fetchDados();
+  }, [leilaoId]);
 
   const extrairErro = async (resposta: Response) => {
     try {
@@ -49,6 +63,14 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
   const handleDarLance = async () => {
     if (!valorLance) {
       setStatusAviso({ tipo: 'erro', mensagem: 'Por favor, insira um valor para o lance.' });
+      return;
+    }
+
+    const valorNumerico = parseFloat(valorLance.replace(',', '.'));
+    const valorReferencia = maiorLance ? maiorLance : parseFloat(valorAtual);
+
+    if (valorNumerico <= valorReferencia) {
+      setStatusAviso({ tipo: 'erro', mensagem: `O lance deve ser maior que R$ ${valorReferencia.toFixed(2)}` });
       return;
     }
 
@@ -68,8 +90,8 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
         },
         body: JSON.stringify({
           leilao: leilaoId,
-          valor: parseFloat(valorLance.replace(',', '.')), 
-          comprador: compradorSelecionado // CORRIGIDO: Enviando 'comprador' em vez de 'usuario'
+          valor: valorNumerico, 
+          comprador: compradorSelecionado
         }),
       });
 
@@ -104,9 +126,23 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
       )}
 
       <Text style={styles.title}>{produtoNome}</Text>
-      <Text style={styles.valor}>Valor Mínimo/Atual: R$ {String(valorAtual)}</Text>
       
-      {/* --- INÍCIO DO LOGIN IMPROVISADO --- */}
+      <View style={styles.valoresContainer}>
+        <Text style={styles.valorMinimo}>
+          Valor Mínimo: R$ {parseFloat(valorAtual).toFixed(2)}
+        </Text>
+        
+        {maiorLance ? (
+          <Text style={styles.valorAtual}>
+            Maior Lance Atual: R$ {maiorLance.toFixed(2)}
+          </Text>
+        ) : (
+          <Text style={styles.valorAtual}>
+            Valor Atual: R$ {parseFloat(valorAtual).toFixed(2)} (Sem Lances)
+          </Text>
+        )}
+      </View>
+      
       <Text style={styles.inputLabel}>Quem está dando o lance? (Login)</Text>
       {loadingCompradores ? (
         <ActivityIndicator size="small" color="#E67E22" style={{ marginBottom: 15 }} />
@@ -126,12 +162,11 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
           </Picker>
         </View>
       )}
-      {/* --- FIM DO LOGIN IMPROVISADO --- */}
 
       <Text style={styles.inputLabel}>Valor do Lance</Text>
       <TextInput 
         style={styles.input} 
-        placeholder="Ex: 2500.50" 
+        placeholder={`Ex: ${(maiorLance ? maiorLance + 10 : parseFloat(valorAtual) + 10).toFixed(2)}`} 
         value={valorLance} 
         onChangeText={setValorLance} 
         keyboardType="decimal-pad" 
@@ -146,8 +181,11 @@ const DetalheLeilaoScreen = ({ route, navigation }: any) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff' },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
-  valor: { fontSize: 18, color: '#27AE60', marginBottom: 20 },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 15 },
+  
+  valoresContainer: { backgroundColor: '#f9f9f9', padding: 15, borderRadius: 8, marginBottom: 20, borderWidth: 1, borderColor: '#eee' },
+  valorMinimo: { fontSize: 14, color: '#666', marginBottom: 5 },
+  valorAtual: { fontSize: 18, color: '#27AE60', fontWeight: 'bold' },
   
   inputLabel: { fontSize: 14, color: '#555', marginBottom: 5, fontWeight: 'bold' },
   input: { borderWidth: 1, borderColor: '#ddd', padding: 15, borderRadius: 8, marginBottom: 20, fontSize: 16 },

@@ -1,34 +1,32 @@
-import { Ionicons } from '@expo/vector-icons';
-import { DrawerScreenProps } from '@react-navigation/drawer';
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
-import { DrawerParamList } from '../navigation/DrawerNavigator';
+import { API_URL } from '../config';
 
-type Props = DrawerScreenProps<DrawerParamList, 'Usuarios'>;
-
-// Tipagem baseada nos atributos da sua classe Usuario
+// Tipagem atualizada com os novos campos vindos do Django
 export type Usuario = {
   id: number;
+  perfil: string;
   ativo: boolean;
   pontuacao: number;
   cpf: string;
-  perfil: string;
-  pessoa: number; // ID da pessoa vinculada
+  pessoa: number;
+  pessoa_nome?: string;      // Campo injetado pelo serializer
+  pessoa_sobrenome?: string; // Campo injetado pelo serializer
 };
 
-const UsuariosScreen = ({ navigation }: Props) => {
+const UsuariosScreen = () => {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchUsuarios = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/usuarios/');
+      const response = await fetch(`${API_URL}/usuarios/`);
       const data = await response.json();
       setUsuarios(data);
     } catch (error) {
-      console.error("Erro ao buscar usuários:", error);
+      console.error("Erro ao buscar usuários do Django:", error);
     } finally {
       setLoading(false);
     }
@@ -42,12 +40,21 @@ const UsuariosScreen = ({ navigation }: Props) => {
 
   const renderItem = ({ item }: { item: Usuario }) => (
     <View style={styles.card}>
-      <Text style={styles.name}>Perfil: {item.perfil}</Text>
-      <Text style={styles.info}>CPF: {item.cpf}</Text>
-      <Text style={styles.info}>Pontuação: {item.pontuacao}</Text>
-      <Text style={styles.status}>
-        Status: {item.ativo ? 'Ativo 🟢' : 'Inativo 🔴'}
+      {/* Exibe o nome associado se ele existir, caso contrário mostra o ID da FK */}
+      <Text style={styles.name}>
+        👤 {item.pessoa_nome ? `${item.pessoa_nome} ${item.pessoa_sobrenome}` : `Usuário ID: ${item.id}`}
       </Text>
+      
+      <Text style={styles.info}>🪪 CPF: {item.cpf}</Text>
+      <Text style={styles.info}>💼 Perfil: {item.perfil.toUpperCase()}</Text>
+      <Text style={styles.info}>🏆 Pontuação: {item.pontuacao} pts</Text>
+      
+      <View style={styles.statusContainer}>
+        <Text style={styles.info}>Status: </Text>
+        <Text style={[styles.statusText, item.ativo ? styles.statusAtivo : styles.statusInativo]}>
+          {item.ativo ? 'ATIVO' : 'INATIVO'}
+        </Text>
+      </View>
     </View>
   );
 
@@ -72,10 +79,13 @@ const UsuariosScreen = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 16, paddingTop: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12, color: '#333', alignSelf: 'center' },
-  card: { backgroundColor: '#f0f4ff', padding: 16, borderRadius: 10, marginBottom: 12, elevation: 2 },
-  name: { fontSize: 18, fontWeight: '600', color: '#222', textTransform: 'capitalize' },
-  info: { fontSize: 14, color: '#666', marginTop: 4 },
-  status: { fontSize: 14, fontWeight: 'bold', color: '#4B7BE5', marginTop: 8 },
+  card: { backgroundColor: '#F2F4F4', padding: 16, borderRadius: 10, marginBottom: 12, borderLeftWidth: 5, borderLeftColor: '#4B7BE5', elevation: 2 },
+  name: { fontSize: 18, fontWeight: 'bold', color: '#111', marginBottom: 6 },
+  info: { fontSize: 14, color: '#555', marginTop: 3 },
+  statusContainer: { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
+  statusText: { fontSize: 12, fontWeight: 'bold', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4 },
+  statusAtivo: { backgroundColor: '#D4EFDF', color: '#196F3D' },
+  statusInativo: { backgroundColor: '#FADBD8', color: '#943126' },
   empty: { textAlign: 'center', marginTop: 20, fontSize: 16, color: '#999' }
 });
 

@@ -8,7 +8,6 @@ export type Pessoa = {
   id: number;
   nome: string;
   email: string;
-  cpf: string;
 };
 
 const PessoasScreen = () => {
@@ -38,7 +37,6 @@ const PessoasScreen = () => {
     <View style={styles.card}>
       <Text style={styles.name}>{item.nome}</Text>
       <Text style={styles.info}>📧 Email: {item.email}</Text>
-      <Text style={styles.info}>🆔 CPF: {item.cpf}</Text>
     </View>
   );
 

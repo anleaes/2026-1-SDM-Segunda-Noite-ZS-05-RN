@@ -2,9 +2,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import HomeScreen from '../screens/HomeScreen';
+import UsuariosScreen from '../screens/UsuariosScreen';
+import Ionicons from '@expo/vector-icons/build/Ionicons';
 
 export type DrawerParamList = {
   Home: undefined;
+  Usuarios: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -26,6 +29,14 @@ const DrawerNavigator = () => {
         component={HomeScreen}
         options={{ title: 'Início' }}
       />
+      <Drawer.Screen
+     name="Usuarios"
+     component={UsuariosScreen}
+     options={{ 
+         title: 'Usuários',
+         drawerIcon: ({ color, size }) => <Ionicons name="person-circle-outline" size={size} color={color} />
+     }}
+   />
     </Drawer.Navigator>  
   );
 };

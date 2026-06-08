@@ -11,6 +11,7 @@ import CadastroProdutoScreen from '../screens/CadastroProdutoScreen';
 import ProdutosScreen from '../screens/ProdutosScreen';
 import LeiloesScreen from '../screens/LeiloesScreen';
 import DetalheLeilaoScreen from '../screens/DetalheLeilaoScreen';
+import ListaLancesScreen from '../screens/ListaLancesScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -22,6 +23,7 @@ export type DrawerParamList = {
   Produtos: undefined;
   Leiloes: undefined;
   DetalheLeilao: { leilaoId: number; produtoNome: string; valorAtual: string };
+  ListaLances: { leilaoId: number; produtoNome: string; valorAtual: string };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -44,47 +46,55 @@ const DrawerNavigator = () => {
         options={{ title: 'Início' }}
       />
       <Drawer.Screen
-     name="Usuarios"
-     component={UsuariosScreen}
-     options={{ 
-         title: 'Usuários',
-         drawerIcon: ({ color, size }) => <Ionicons name="person-circle-outline" size={size} color={color} />
-     }}
-   />
+        name="Usuarios"
+        component={UsuariosScreen}
+        options={{ 
+          title: 'Usuários',
+          drawerIcon: ({ color, size }) => <Ionicons name="person-circle-outline" size={size} color={color} />
+        }}
+      />
       <Drawer.Screen 
-  name="Pessoas" 
-  component={PessoasScreen} 
-  options={{ title: 'Pessoas' }} 
-      
-/>
-     <Drawer.Screen 
-  name="Enderecos" 
-  component={EnderecosScreen} 
-  options={{ title: 'Endereços' }} 
-/>
-     <Drawer.Screen 
-  name="CadastroPessoa" 
-  component={CadastroPessoaScreen} 
-  options={{ title: 'Novo Cadastro' }} 
-/>
-<Drawer.Screen 
-    name="CadastroProduto" 
-    component={CadastroProdutoScreen} 
-    options={{ title: 'Novo Produto' }} 
-  />
-<Drawer.Screen 
-  name="Produtos" 
-  component={ProdutosScreen} 
-  options={{ title: 'Produtos' }} 
-/>
-<Drawer.Screen 
-  name="Leiloes" 
-  component={LeiloesScreen} 
-  options={{ title: 'Leilões' }} 
-/>
-<Drawer.Screen name="DetalheLeilao" 
-  component={DetalheLeilaoScreen}
-  options={{ drawerItemStyle: { display: 'none' } }} />
+        name="Pessoas" 
+        component={PessoasScreen} 
+        options={{ title: 'Pessoas' }} 
+      />
+      <Drawer.Screen 
+        name="Enderecos" 
+        component={EnderecosScreen} 
+        options={{ title: 'Endereços' }} 
+      />
+      <Drawer.Screen 
+        name="CadastroPessoa" 
+        component={CadastroPessoaScreen} 
+        options={{ title: 'Novo Cadastro' }} 
+      />
+      <Drawer.Screen 
+        name="CadastroProduto" 
+        component={CadastroProdutoScreen} 
+        options={{ title: 'Novo Produto' }} 
+      />
+      <Drawer.Screen 
+        name="Produtos" 
+        component={ProdutosScreen} 
+        options={{ title: 'Produtos' }} 
+      />
+      <Drawer.Screen 
+        name="Leiloes" 
+        component={LeiloesScreen} 
+        options={{ title: 'Leilões' }} 
+      />
+
+      {/* Telas internas, ocultas do menu lateral */}
+      <Drawer.Screen 
+        name="DetalheLeilao" 
+        component={DetalheLeilaoScreen}
+        options={{ title: 'Dar Lance', drawerItemStyle: { display: 'none' } }} 
+      />
+      <Drawer.Screen 
+        name="ListaLances" 
+        component={ListaLancesScreen}
+        options={{ title: 'Histórico de Lances', drawerItemStyle: { display: 'none' } }} 
+      />
     </Drawer.Navigator>  
   );
 };
